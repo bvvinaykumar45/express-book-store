@@ -1,0 +1,27 @@
+{
+  "name": "express-book-store",
+  "version": "1.0.0",
+  "description": "---",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --watch index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bvvinaykumar45/express-book-store.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bvvinaykumar45/express-book-store/issues"
+  },
+  "homepage": "https://github.com/bvvinaykumar45/express-book-store#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.6.0"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
