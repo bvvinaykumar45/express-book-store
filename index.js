@@ -9,4 +9,9 @@ const books = [
   {id: 1, title: 'Title Two', author: 'Author Two'},  
 ];
 
+// Routes
+app.get('/books', (req, res) => {
+  res.json(books);
+});
+
 app.listen(PORT, () => console.log(`Http server is running on PORT ${PORT}`));
