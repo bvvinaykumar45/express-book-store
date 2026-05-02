@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('node:fs');
 
 const app = express();
 const PORT = 8000;
@@ -9,8 +10,15 @@ const books = [
   { id: 1, title: 'Title Two', author: 'Author Two' },  
 ];
 
+function loggerMiddleware(req, res, next) {
+  const log = `\n [${Date.toString()}] ${req.method} ${req.path}`;
+  fs.appendFileSync('logs.txt', log, 'utf-8');
+  next();
+}
+
 // Middlewares (Plugins)
 app.use(express.json());
+app.use(loggerMiddleware);
 
 // Routes
 app.get('/books', (req, res) => {
