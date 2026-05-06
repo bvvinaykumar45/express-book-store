@@ -1,5 +1,4 @@
 const { pgTable, varchar, uuid } = require('drizzle-orm/pg-core');
-const { lstatSync } = require('node:fs');
 
 const authorsTable = pgTable('authors', {
   id: uuid().primaryKey().defaultRandom(),
