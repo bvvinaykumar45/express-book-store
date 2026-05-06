@@ -1,8 +1,18 @@
-const { eq } = require("drizzle-orm");
+const { eq, ilike } = require("drizzle-orm");
 const db = require("../db/index.js");
 const booksTable = require("../models/book.model.js");
 
 exports.getAllBooks = async function (req, res) {
+  const search = req.query.search;
+
+  if (search) {
+    const books = await db
+      .select()
+      .from(booksTable)
+      .where(ilike(booksTable.title, `%${search}%`));
+    return res.json(books);
+  }
+
   const books = await db.select().from(booksTable);
   return res.json(books);
 };
@@ -31,7 +41,7 @@ exports.createBook = async function (req, res) {
     return res.status(400).json({ error: "title is required" });
 
   if (!authorId || authorId === "")
-    return res.status(400).json({ error: "authorId is required" }); 
+    return res.status(400).json({ error: "authorId is required" });
 
   const [result] = await db
     .insert(booksTable)
