@@ -3,6 +3,7 @@ const express = require('express');
 
 const { loggerMiddleware } = require('./middlewares/logger.js');
 const bookRouter = require('./routes/book.route.js');
+const authorRouter = require('./routes/author.route.js');
 
 const app = express();
 const PORT = 8000;
@@ -13,5 +14,6 @@ app.use(loggerMiddleware);
 
 // Routes
 app.use('/books', bookRouter);
+app.use('/authors', authorRouter);
 
 app.listen(PORT, () => console.log(`Http server is running on PORT ${PORT}`));
